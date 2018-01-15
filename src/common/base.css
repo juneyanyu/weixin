@@ -14,6 +14,8 @@ table tfoot tr td, ul li, ul, li, ol li, ol, dl, dt, dd,
 dl dt, dl dd{
 	margin:0px; padding:0px;
 	-webkit-overflow-scrolling: touch;
+	-webkit-box-sizing: border-box;
+  	box-sizing: border-box
 }
 article,aside,dialog,footer,header,section,footer,nav,figure,menu{
 	display:block;
