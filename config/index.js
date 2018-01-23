@@ -9,18 +9,9 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-       '/api/': {
-            target: 'http://192.168.2.71:8111',
-            changeOrigin:true,  //set the option changeOrigin to true for name-based virtual hosted sites
-            pathRewrite: {
-             '^/api': '/api'
-            }
-       },
-    },
 
     // Various Dev Server settings
-    host: '192.168.1.232', // can be overwritten by process.env.HOST
+    host: '127.0.0.1', // can be overwritten by process.env.HOST
     port: 7777, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
