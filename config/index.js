@@ -1,7 +1,6 @@
 'use strict'
 // Template version: 1.2.8
 // see http://vuejs-templates.github.io/webpack for documentation.
-
 const path = require('path')
 
 module.exports = {
@@ -10,17 +9,24 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+       '/api/': {
+            target: 'http://192.168.2.71:8111',
+            changeOrigin:true,  //set the option changeOrigin to true for name-based virtual hosted sites
+            pathRewrite: {
+             '^/api': '/api'
+            }
+       },
+    },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: '192.168.1.232', // can be overwritten by process.env.HOST
     port: 7777, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
     /**
      * Source Maps
      */
@@ -43,8 +49,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-
+    assetsPublicPath: './',
     /**
      * Source Maps
      */
