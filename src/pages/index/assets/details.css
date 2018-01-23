@@ -1,0 +1,102 @@
+h4{
+	height: 1rem;
+	padding:0 .2rem;
+	border-bottom: 1px solid #d0d0d0;
+	margin-bottom: .09rem;
+	line-height: 1rem;
+	font-size: 14px;
+	font-weight: normal
+}
+html,body,#app,.detailscon{
+	height: 100%
+}
+.mint-navbar{
+	border-bottom: 1px solid #d0d0d0;
+	border-top: 1px solid #d0d0d0;
+	height: .8rem;
+	line-height: .8rem;
+}
+.mint-navbar .mint-tab-item.is-selected{
+	background: #02a8f3;
+	color: #fff;
+	border: none;
+	margin-bottom: 0
+}
+.mint-tab-item-label{
+	font-size: 14px;
+	line-height: .8rem;
+}
+.mint-navbar .mint-tab-item{
+	padding: 0;
+	/*text-align: left*/
+}
+
+.page-tab-container .mint-cell-value{
+	width: 100%
+}
+.listbar{
+	border-bottom: 1px solid #ddd;
+	width: 100%;
+	padding: .3rem;line-height: .4rem;
+	font-size: 18px;
+}
+.l_list{
+float: right;
+width: 10%;
+height: 100%;
+}
+.page-tab-container .mint-cell:first-child .listbar:after{
+display: block;
+	width: .32rem;
+	height: .32rem;
+	content: '';
+	position: absolute;
+	background: #9adcfa;
+	border-radius: 50%;
+	left: -.175rem;
+	top: .23rem;
+}
+
+.page-tab-container .mint-cell-wrapper{
+	width: 100%;
+	margin-left:.4rem;
+	border-left: 1px solid #b3b3b3;
+	position: relative;
+	overflow: visible;
+
+}
+
+.listbar:before{
+	display: block;
+	width: .16rem;
+	height: .16rem;
+	content: '';
+	position: absolute;
+	background: #b3b3b3;
+	border-radius: 50%;
+	left: -.1rem;
+	z-index: 99
+}
+.page-tab-container .mint-cell:first-child .listbar:before{
+	background: #02a8f3;
+}
+.page-tab-container .mint-cell:first-child .listbar{
+	color: #02a8f3
+}
+.f14{
+	font-size: 14px
+}
+.mint-button--default{
+	background: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	height: .8rem;
+	border-radius: 0;
+}
+.nav{
+	border-bottom: 1px solid #ddd;
+
+}
+.tab{
+	border-bottom: 2px solid #02a8f3
+}

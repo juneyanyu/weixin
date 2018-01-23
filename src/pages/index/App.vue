@@ -1,18 +1,18 @@
 <template>
   <div id="search">
     <label for="">
-      <input type="text" name="" value="" v-model="code" placeholder="请输入单号">
-      <i class="clearinput" v-if="code.length>0" @click="clearinput"></i>
+      <input type="text" name="" value="" v-model="code" placeholder="请输入单号" maxlength="20">
+      <i class="clearinput" v-if="code.length>0" @click="clearinput('code')"></i>
     </label>
     <label for="" v-if="iskehu" >
       <input type="text" name="" value="" placeholder="请输入客户编号" v-model="cuscode">
-      <i class="clearinput" v-if="code.length>0"></i>
+      <i class="clearinput" v-if="cuscode.length>0" @click="clearinput('cuscode')"></i>
     </label>
     
     <input type="button" name=""  value="查询" id="submit" :class='[{"disabled":disabled},"btn"]'  :disabled="disabled" @click="submit()">
     <dl>
       <dt>历史记录</dt>
-      <dd v-for="(el,index) in historylist">{{el}}</dd>
+      <dd v-for="(el,index) in historylist" @click="submit(el)">{{el.seat}}</dd>
     </dl>
   </div>
 </template>
@@ -21,6 +21,8 @@
 import axios from 'axios'
 import qs from 'qs'
 import { Toast } from 'mint-ui';
+const list=(localStorage.historylist?JSON.parse(localStorage.historylist):[])
+
 export default {
   name: 'app',
   data () {
@@ -28,7 +30,7 @@ export default {
       code:'',//单号
       iskehu:false,//是否显示客户单号
       disabled:true,//当前可提交状态
-      historylist:[],
+      historylist:list,
       cuscode:''
     }
   },
@@ -44,41 +46,49 @@ export default {
     }
   },
   methods: {
-    submit: function(){
+    submit: function(res){
+      
         let _self=this,condition;
-        if(_self.iskehu){
-           condition={
-            seat: this.code,
-            consignerCode:this.cuscode
-          }
+        if(!res){
+            if(_self.iskehu){
+               condition={
+                seat: $.trim(this.code),
+                consignerCode:$.trim(this.cuscode)
+              }
+            }else{
+              condition={
+                seat: $.trim(this.code)
+              }
+            }
         }else{
-          condition={
-            seat: this.code
-          }
+          condition=res
         }
-        // _self.$router.push({
-        //         path: '/details',
-        //         name: 'Details',
-        //         params:{
-        //           id:132123
-        //         }
-        //       })
         axios.get('/tmsWx/route/list.do',{params:{condition}})
           .then(function (response) {
-             
-            if(response.data.errorCode=='5020'){
+             if(response.data.errorCode=='0'){
+                const unlist=_self.historylist.find(function(v,i,arr){
+                  return _self.code==v.seat
+                })
+               if(!unlist&&!res){
+                    _self.historylist.unshift(condition)
+                    if(_self.historylist.length>=5){
+                      _self.historylist.splice(5)
+                    }
+                    localStorage.setItem('historylist',JSON.stringify(_self.historylist));
+               }
+               sessionStorage.infoms=JSON.stringify(response.data)
+                _self.$router.push({
+                  path: '/details',
+                  name: 'Details'
+                })
+            }else{
               Toast({
                 message: response.data.errorMsg,
                 position: 'top',
                 duration: 2000
               });
-              _self.iskehu=true;
-              
-               console.log(response);
-            }else{
-               this.historylist.unshift(this.code)
-              if(this.historylist.length>=5){
-                this.historylist.splice(5)
+              if(response.data.errorCode=='5020'){
+                _self.iskehu=true;
               }
             }
           })
@@ -86,8 +96,13 @@ export default {
             console.log(error);
           });
     },
-    clearinput: function(){
-      this.code=''
+    clearinput: function(co){
+      if(co=='cuscode'){
+        this.cuscode=''
+      }else{
+        this.code=''
+      }
+      
     }
   }
 

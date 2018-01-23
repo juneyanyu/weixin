@@ -15,10 +15,10 @@ Vue.use(Mint);
 //给vue.$http设置一个默认baseurl
 import Ajax from '../../../config/axiosConfig';
 Vue.use(Ajax, {
-    baseURL: 'http://192.168.1.102:8111'
+    baseURL: 'http://192.168.2.71:8111'
 })
 //给axios设置一个默认baseurl
-axios.defaults.baseURL = 'http://192.168.1.102:8111';
+axios.defaults.baseURL = 'http://192.168.2.71:8111';
 
 Vue.use(Router)
 
