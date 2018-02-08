@@ -1,11 +1,10 @@
 h4{
-	height: 1rem;
-	padding:0 .2rem;
+	height: 1.43rem;
+	padding:0 .2rem !important;
 	border-bottom: 1px solid #d0d0d0;
-	margin-bottom: .09rem;
-	line-height: 1rem;
-	font-size: 14px;
-	font-weight: normal
+	line-height: 1.43rem;
+	font-weight: normal;
+	background: #fff
 }
 html,body,#app,.detailscon{
 	height: 100%
@@ -13,21 +12,20 @@ html,body,#app,.detailscon{
 .mint-navbar{
 	border-bottom: 1px solid #d0d0d0;
 	border-top: 1px solid #d0d0d0;
-	height: .8rem;
-	line-height: .8rem;
+	height: 1.43rem;
+	line-height: 1.43rem;
 }
 .mint-navbar .mint-tab-item.is-selected{
 	background: #02a8f3;
-	color: #fff;
+	color: #fff !important;
 	border: none;
 	margin-bottom: 0
 }
 .mint-tab-item-label{
-	font-size: 14px;
-	line-height: .8rem;
+	font-size: 20px;
+	line-height: 1.43rem;
 }
 .mint-navbar .mint-tab-item{
-	padding: 0;
 	/*text-align: left*/
 }
 
@@ -35,11 +33,11 @@ html,body,#app,.detailscon{
 	width: 100%
 }
 .listbar{
-	border-bottom: 1px solid #ddd;
 	width: 100%;
-	padding: .3rem;line-height: .4rem;
+	padding: .3rem;line-height: .75rem;
 	font-size: 18px;
 }
+
 .l_list{
 float: right;
 width: 10%;
@@ -53,8 +51,8 @@ display: block;
 	position: absolute;
 	background: #9adcfa;
 	border-radius: 50%;
-	left: -.175rem;
-	top: .23rem;
+	left: -.17rem;
+	top: .48rem;
 }
 
 .page-tab-container .mint-cell-wrapper{
@@ -74,7 +72,8 @@ display: block;
 	position: absolute;
 	background: #b3b3b3;
 	border-radius: 50%;
-	left: -.1rem;
+	left: -.08rem;
+	top: .55rem;
 	z-index: 99
 }
 .page-tab-container .mint-cell:first-child .listbar:before{
@@ -83,14 +82,14 @@ display: block;
 .page-tab-container .mint-cell:first-child .listbar{
 	color: #02a8f3
 }
-.f14{
-	font-size: 14px
+.f5{
+	font-size: 15px
 }
 .mint-button--default{
 	background: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
-	height: .8rem;
+	height: 1rem;
 	border-radius: 0;
 }
 .nav{
@@ -98,5 +97,8 @@ display: block;
 
 }
 .tab{
-	border-bottom: 2px solid #02a8f3
+	border-bottom: 2px solid #02a8f3 !important
+}
+.mint-button--small{
+	padding: 0 20px;
 }

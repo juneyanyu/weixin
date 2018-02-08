@@ -1,6 +1,9 @@
 <template>
 	<div class="detailscon">
-		<h4>{{codety}}：{{code}}</h4>
+    <div style="background: #eeeeee;padding-bottom: .09rem">
+      <h4 style="font-size: 20px">{{codety}}：{{code}}</h4>
+    </div>
+		
 		<mt-navbar v-model="selected">
 		  <mt-tab-item id="text">文字轨迹</mt-tab-item>
 		  <mt-tab-item id="map">地图轨迹</mt-tab-item>
@@ -9,13 +12,13 @@
 		<mt-tab-container v-model="selected">
 		  <mt-tab-container-item id="text">
 		 	 <div class="nav">
-		      <mt-button size="small"  v-for="(value,index) of rr" @click.native.prevent="activetab(index)" :class="{'tab':tab[index]}">{{index+1}}</mt-button>
+		      <mt-button size="small" v-if="rr.length>1"  v-for="(value,index) of rr" @click.native.prevent="active= 'tab-container'+index" :class="{'tab':tab[index]}">{{index+1}}</mt-button>
 		     </div>
 		     <div class="page-tab-container" >
 		      <mt-tab-container class="page-tabbar-tab-container" v-model="active" swipeable>
 		        <mt-tab-container-item :id="'tab-container'+index" v-for="(value,index) of rr">
 		            <!-- cell组件 -->
-	             <mt-cell v-for="(key,i) of value"><div class="listbar">{{key.routeDetail}}<br><span class="f14">{{key.createTime}}</span></div></mt-cell>
+	             <mt-cell v-for="(key,i) of value"><div class="listbar">{{key.routeDetail}}<br><span class="f15">{{key.createTime}}</span></div></mt-cell>
 		        </mt-tab-container-item>
 		     
 		      </mt-tab-container>
@@ -56,11 +59,21 @@ export default {
                 position: 'top',
                 duration: 2000
               });
-  	}
+  	},
+    active:function(v){
+      for(var i=0;i<this.rr.length;i++){
+        if(v.indexOf(i)>-1){
+          this.tab[i]=true
+        }else{
+          this.tab[i]=false
+        }
+      }
+    }
   },
   mounted(){
   	const data=(sessionStorage.infoms ? JSON.parse(sessionStorage.infoms) : '');
   		this.rr=data.body;
+      console.log(this.rr)
     	this.codety=data.ordertype;
     	this.code=data.orderNumber;
   },
@@ -80,7 +93,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css" >
 @import "/assets/details.css";
 
 </style>

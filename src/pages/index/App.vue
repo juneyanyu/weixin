@@ -93,7 +93,11 @@ export default {
             }
           })
           .catch(function (error) {
-            console.log(error);
+             Toast({
+                message: error.message,
+                position: 'top',
+                duration: 2000
+              });
           });
     },
     clearinput: function(co){
@@ -157,7 +161,8 @@ label{
   color: #b4b4b4
 }
 dl{
-  font-size: 14px;
-  color: #999
+  font-size: 16px;
+  color: #999;
+  line-height: 1.2rem;
 }
 </style>

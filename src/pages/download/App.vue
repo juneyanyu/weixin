@@ -1,6 +1,6 @@
 <template>
 	<div class="wrap">
-		<a href="http://2bai.co/18126276" class="btn"><img src="./assets/btn.png" alt=""></a>
+		<a href="http://2bai.co/18716639" class="btn"><img src="./assets/btn.png" alt=""></a>
 	</div>
 </template>
 
