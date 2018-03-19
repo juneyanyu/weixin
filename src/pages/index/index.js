@@ -9,6 +9,9 @@ import axios from 'axios'
 import Mint from'mint-ui'
 import App from './App'
 import Router from 'vue-router'
+import BMapComponent from './BMapComponent'
+import VueJsonp from 'vue-jsonp'
+Vue.use(VueJsonp)
 
 Vue.use(Mint);
 //给vue.$http设置一个默认baseurl
@@ -18,7 +21,6 @@ Vue.use(Mint);
 // })
 //给axios设置一个默认baseurl
 axios.defaults.baseURL = process.env.API_ROOT;
-
 Vue.use(Router)
 
 const router = new Router({
@@ -33,8 +35,7 @@ const router = new Router({
     {
       path: '/details',
       name: 'Details',
-      component: Detailstmp,
-
+      component: Detailstmp
     }
   ]
 })
