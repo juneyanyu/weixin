@@ -1,65 +1,35 @@
 <template>
-	 <div id="allmap" v-bind:style="mapStyle"></div>
+	 <baidu-map class="map" :center="center" :zoom="zoom"  NavigationControlType="BMAP_NAVIGATION_CONTROL_LARGE">
+      <bm-marker :position="{lng: 116.404, lat: 39.915}" >
+        <!-- <bm-label content="我爱北京天安门" :labelStyle="{color: 'red', fontSize : '24px'}" :offset="{width: -35, height: 30}"/> -->
+      </bm-marker>
+    </baidu-map>
 </template>
 
 <script>
-import $ from 'jquery'
+import Vue from 'vue'
+import BaiduMap from 'vue-baidu-map'
 
- export default {
-    data:function(){
-      return{
-        mapStyle:{
-          width:'100%',
-          height:this.mapHeight +'px'
-        }
-      }
-    },
-    props:{
-      // 地图在该视图上的高度
-      mapHeight:{
-        type:Number,
-        default:500
-      },
-      // 经度
-      longitude:{
-        type:Number,
-        default:116.404
-      },
-      // 纬度
-      latitude:{
-        type:Number,
-        default:39.915
-      },
-      description:{
-        type:String,
-        default:'天安门'
-      }
-    },
-   
-    // ready:function(){
-    //   var map =newBMap.Map("allmap");
-    //   var point =newBMap.Point(this.longitude,this.latitude);
-    //   var marker =newBMap.Marker(point);
-    //   map.addOverlay(marker);
-    //   map.centerAndZoom(point,15);
-    //   // 信息窗的配置信息
-    //   var opts ={
-    //     width :250,
-    //     height:75,
-    //     title :"地址：",
-    //   }
-    //   var infoWindow =newBMap.InfoWindow(this.description, opts);// 创建信息窗口对象
-    //   marker.addEventListener("click",function(){
-    //     map.openInfoWindow(infoWindow,point);
-    //   });
-    //   map.enableScrollWheelZoom(true);
-    //   map.openInfoWindow(infoWindow,point);//开启信息窗口
-    // }
-  }
-$(function(){
-	console.log(12312)
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: '8PIUEeHbipfeb3UXD95fNF9RWsb1NrPZ',
 })
+
+export default {
+  name:'BMapComponent',
+  data () {
+    return {
+      center: {lng: 116.404, lat: 39.915},
+      zoom: 5
+    }
+  }
+ 
+}
 </script>
 
 <style lang="css" scoped>
+.map {
+  width: 100%;
+  height: 500px;
+}
 </style>

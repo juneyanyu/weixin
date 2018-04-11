@@ -15,6 +15,8 @@
     "lib-flexible": "^0.3.2",
     "mint-ui": "^2.2.13",
     "vue": "^2.5.2",
+    "vue-baidu-map": "^0.20.7",
+    "vue-jsonp": "^0.1.7",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
